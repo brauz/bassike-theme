@@ -151,7 +151,15 @@
 {% include 'product-notify-me' %}
 
 {% unless product.tags contains 'coming-soon' %}
-  {% include 'product-find-in-store' %}
+  <div
+    id="brauz-find-in-store-config-product-page"
+    data-sd="{{ shop.permanent_domain }}"
+    data-cvi="{{ product.first_available_variant.id }}"
+    data-hodv="{{ product.has_only_default_variant }}"
+    style="display: none; width: 0"
+  ></div>
+  <div id="brauz-find-in-store-product-page" style="width: 100%;"></div>
+  <script src="https://d3aq2u4yw77ivo.cloudfront.net/find-in-store/shopify/bassike/find-in-store.shopify.bassike.prod.js" async></script>
 {% endunless %}
 
 {% assign product_tags = product.tags | join: '|' %}
